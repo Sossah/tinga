@@ -74,6 +74,15 @@
         background-attachment: fixed; /* Fixe l'image pendant le défilement */
         opacity: 0.2; /* Augmenté de 0.1 à 0.2 pour plus de visibilité */
         z-index: -1;
+        min-height: 100vh; /* Assure que l'image couvre au moins toute la hauteur de la fenêtre */
+        position: fixed; /* Fixe l'image par rapport à la fenêtre du navigateur */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Limiter l'image au contenu principal sans déborder dans la sidebar */
+        left: 16.67%; /* Correspond à col-md-2 pour la sidebar */
+        width: 83.33%; /* Reste de l'espace disponible */
     }
     
     .rapport-card {

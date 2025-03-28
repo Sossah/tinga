@@ -204,6 +204,31 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Initialisation de DataTable
+        $('#souscriptionsTable').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json',
+                lengthMenu: "_MENU_",
+                info: "_START_ à _END_ sur _TOTAL_",
+                search: "",
+                searchPlaceholder: "Rechercher...",
+                zeroRecords: "Aucun résultat",
+                infoEmpty: "0 enregistrement",
+                infoFiltered: "(filtrés depuis _MAX_ enregistrements)",
+                paginate: {
+                    previous: '<i class="fas fa-chevron-left"></i>',
+                    next: '<i class="fas fa-chevron-right"></i>'
+                }
+            },
+            responsive: true,
+            columnDefs: [
+                { orderable: false, targets: -1 } // Désactive le tri sur la dernière colonne (actions)
+            ],
+            pageLength: 10,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Tous"]],
+            dom: '<"d-flex justify-content-between align-items-center mb-3"lf>rt<"d-flex justify-content-between align-items-center mt-3"ip>'
+        });
+        
         // Gestion du modal pour la période personnalisée
         const periodeSelect = document.getElementById('periode');
         const dateDebutInput = document.getElementById('date_debut');
