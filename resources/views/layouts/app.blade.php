@@ -190,7 +190,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}" 
                            onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();">
-                            <i class="fas fa-sign-out-alt me-2"></i>Déconnexion
+                            <i class="fas fa-sign-out-alt me-2"></i>Déconnex
                         </a>
                         <form id="logout-form-header" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
