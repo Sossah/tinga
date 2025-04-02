@@ -53,8 +53,8 @@
                                     <label for="type_souscription" class="form-label">Type de souscription <span class="text-danger">*</span></label>
                                     <select class="form-select @error('type_souscription') is-invalid @enderror" id="type_souscription" name="type_souscription" required>
                                         <option value="">Sélectionner</option>
-                                        <option value="4_ans" {{ old('type_souscription') == '4_ans' ? 'selected' : '' }}>Sur 4 ans</option>
-                                        <option value="10_ans" {{ old('type_souscription') == '10_ans' ? 'selected' : '' }}>Sur 10 ans</option>
+                                        <option value="2_fils" {{ old('type_souscription') == '2_fils' ? 'selected' : '' }}>2 fils</option>
+                                        <option value="4_fils" {{ old('type_souscription') == '4_fils' ? 'selected' : '' }}>4 fils</option>
                                     </select>
                                     @error('type_souscription')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -62,9 +62,23 @@
                                 </div>
                             </div>
                         </div>
-                               
+                        
                         <div class="row mb-3">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="amperes" class="form-label">Ampèrage <span class="text-danger">*</span></label>
+                                    <select class="form-select @error('amperes') is-invalid @enderror" id="amperes" name="amperes" required>
+                                        <option value="">Sélectionner</option>
+                                        @for ($i = 5; $i <= 60; $i += 5)
+                                            <option value="{{ $i }}" {{ old('amperes') == $i ? 'selected' : '' }}>{{ $i }} ampères</option>
+                                        @endfor
+                                    </select>
+                                    @error('amperes')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="commentaire" class="form-label">Commentaire</label>
                                     <textarea class="form-control @error('commentaire') is-invalid @enderror" id="commentaire" name="commentaire" rows="3">{{ old('commentaire') }}</textarea>
@@ -74,7 +88,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-between mt-4">
                             <a href="{{ route('souscriptions.create') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left me-1"></i> Retour

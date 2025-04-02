@@ -10,8 +10,14 @@ class Souscription extends Model
     use HasFactory;
 
     protected $fillable = [
-        'abonne_id', 'numero', 'montant', 'type_souscription', 
-        'date_debut', 'statut', 'commentaire'
+        'numero',
+        'abonne_id',
+        'statut',
+        'montant',
+        'amperes', // Ajout du champ amperes
+        'type_souscription',
+        'date_debut',
+        'commentaire',
     ];
 
     public function abonne()

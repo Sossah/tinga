@@ -63,6 +63,7 @@ class SouscriptionController extends Controller
         
         $validatedData = $request->validate([
             'montant' => 'required|numeric|min:1',
+            'amperes' => 'nullable|string|max:50', // Ajout du champ amperes
             'type_souscription' => 'required|string|max:100',
             'commentaire' => 'nullable|string',
         ]);
@@ -126,6 +127,7 @@ class SouscriptionController extends Controller
         $validatedData = $request->validate([
             'statut' => 'required|in:en_attente,validee,rejetee',
             'montant' => 'required|numeric|min:1',
+            'amperes' => 'nullable|string|max:50', // Ajout du champ amperes
             'type_souscription' => 'required|string|max:100',
             'commentaire' => 'nullable|string',
         ]);

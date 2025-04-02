@@ -47,13 +47,15 @@ class SouscriptionSeeder extends Seeder
             $date = Carbon::now()->subDays(rand(1, 180));
             
             // Type de souscription (4 ans ou 10 ans)
-            $type_souscription = $faker->randomElement(['4_ans', '10_ans']);
+            $type_souscription = $faker->randomElement(['2_fils', '4_fils']);
+            $amperes= $faker->randomElement([5, 60]);
             
             Souscription::create([
-                'numero' => 'TINGA-' . date('Y') . '-' . str_pad($index + 1, 5, '0', STR_PAD_LEFT),
+                'numero' => 'TINGA-' . date('YmdHis') . '-' . rand(1000, 9999),
                 'abonne_id' => $abonne->id,
                 'statut' => $faker->randomElement($statuts),
                 'type_souscription' => $type_souscription,
+                'amperes' => $amperes,
                 'montant' => 1000, // Montant par défaut fixé à 1000
                 'date_debut' => $date->copy()->addDays(rand(5, 15))->format('Y-m-d'), // Date de début après la création
                 'commentaire' => $faker->paragraph,

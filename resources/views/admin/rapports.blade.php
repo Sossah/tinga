@@ -71,18 +71,18 @@
         background-image: url('https://www.ceet.tg/tg/wp-content/uploads/2024/07/Copie-de-_DSC2401.jpg');
         background-size: cover;
         background-position: center;
-        background-attachment: fixed; /* Fixe l'image pendant le défilement */
-        opacity: 0.2; /* Augmenté de 0.1 à 0.2 pour plus de visibilité */
+        background-attachment: fixed; 
+        opacity: 0.2; 
         z-index: -1;
-        min-height: 100vh; /* Assure que l'image couvre au moins toute la hauteur de la fenêtre */
-        position: fixed; /* Fixe l'image par rapport à la fenêtre du navigateur */
+        min-height: 100vh; 
+        position: fixed; 
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        /* Limiter l'image au contenu principal sans déborder dans la sidebar */
-        left: 16.67%; /* Correspond à col-md-2 pour la sidebar */
-        width: 83.33%; /* Reste de l'espace disponible */
+       
+        left: 16.67%; 
+        width: 83.33%; 
     }
     
     .rapport-card {

@@ -38,6 +38,13 @@
                 </a>
             </li>
 
+            <hr class="my-3">
+
+            <!-- Section Compte -->
+            <div class="sidebar-heading px-3 py-2 text-muted text-uppercase small fw-bold">
+                Administration
+            </div>
+
             <!-- Utilisateurs -->
             <li class="nav-item">
                 <a class="nav-link d-flex justify-content-between align-items-center {{ request()->routeIs('users.*') || request()->routeIs('roles.*') || request()->routeIs('permissions.*') ? 'active' : '' }}" 

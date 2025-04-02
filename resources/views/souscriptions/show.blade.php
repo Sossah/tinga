@@ -41,6 +41,12 @@
                             <div class="col-md-8">{{ $souscription->type_souscription }}</div>
                         </div>
                     </div>
+                    <div class="mb-3 pb-3 border-bottom">
+                        <div class="row">
+                            <div class="col-md-4 text-muted">Ampèrage</div>
+                            <div class="col-md-8">{{ $souscription->amperes }}</div>
+                        </div>
+                    </div>
                    
                     <div class="mb-3 pb-3 border-bottom">
                         <div class="row">

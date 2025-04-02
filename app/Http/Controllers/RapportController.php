@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Souscription;
 use Carbon\Carbon; // Ajout de l'import Carbon
+use App\Exports\SouscriptionsExport;
+use App\Exports\SouscriptionsPdfExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RapportController extends Controller
 {
@@ -30,6 +33,9 @@ class RapportController extends Controller
                     break;
                 case 'annee':
                     $query->whereYear('created_at', now()->year);
+                    break;
+                case 'tout':
+                    // Ne pas appliquer de filtre de date pour afficher toutes les souscriptions
                     break;
                 // Pour 'personnalise', vous pourriez ajouter des champs de date supplémentaires
             }

@@ -8,10 +8,18 @@
             <div class="btn-group me-2">
               <button type="button" class="btn btn-sm btn-success">
                 <i class="fas fa-share-alt me-1"></i> Partager
-            </button>
-                <button type="button" class="btn btn-sm btn-outline-success">
-                    <i class="fas fa-download me-1"></i> Exporter PDF
-                </button>
+              </button>
+            </div>
+            <div class="btn-group me-2">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-sm btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-download me-1"></i> Exporter
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel me-2 text-success"></i>Excel</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf me-2 text-danger"></i>PDF</a></li>
+                    </ul>
+                </div>
             </div>
             <a href="{{ route('rapports.index') }}" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left me-1"></i> Retour
@@ -30,6 +38,7 @@
                         <div class="col-md-3">
                             <label class="form-label">Période</label>
                             <select class="form-select" name="periode" id="periode">
+                                <option value="tout" {{ request('periode') == 'tout' ? 'selected' : '' }}>Toutes les périodes</option>
                                 <option value="mois" {{ request('periode') == 'mois' ? 'selected' : '' }}>Ce mois</option>
                                 <option value="trimestre" {{ request('periode') == 'trimestre' ? 'selected' : '' }}>Ce trimestre</option>
                                 <option value="annee" {{ request('periode') == 'annee' ? 'selected' : '' }}>Cette année</option>
@@ -109,9 +118,6 @@
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('souscriptions.show', $souscription->id) }}" class="btn btn-outline-secondary"><i class="fas fa-eye"></i></a>
-                                    @if($souscription->canBeEdited())
-                                    <a href="{{ route('souscriptions.edit', $souscription->id) }}" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>
-                                    @endif
                                 </div>
                             </td>
                         </tr>

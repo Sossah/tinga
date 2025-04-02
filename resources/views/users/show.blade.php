@@ -1,36 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-3">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white py-3 border-0">
+                <div class="card-header bg-white py-2 border-0 d-flex align-items-center">
+                    <div class="me-3">
+                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; overflow: hidden;">
+                            <i class="fas fa-user text-success" style="font-size: 24px;"></i>
+                        </div>
+                    </div>
                     <h5 class="m-0 fw-bold text-success">Détails de l'utilisateur: {{ $user->name }}</h5>
                 </div>
-                <div class="card-body">
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Nom:</h6>
-                        <p>{{ $user->name }}</p>
+                <div class="card-body py-2">
+                    <div class="mb-2">
+                        <h6 class="fw-bold mb-1">Nom:</h6>
+                        <p class="mb-2">{{ $user->name }}</p>
                     </div>
 
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Email:</h6>
-                        <p>{{ $user->email }}</p>
+                    <div class="mb-2">
+                        <h6 class="fw-bold mb-1">Email:</h6>
+                        <p class="mb-2">{{ $user->email }}</p>
                     </div>
 
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Téléphone:</h6>
-                        <p>{{ $user->phone ?? 'Non renseigné' }}</p>
+                    <div class="mb-2">
+                        <h6 class="fw-bold mb-1">Téléphone:</h6>
+                        <p class="mb-2">{{ $user->phone ?? 'Non renseigné' }}</p>
                     </div>
 
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Adresse:</h6>
-                        <p>{{ $user->address ?? 'Non renseignée' }}</p>
+                    <div class="mb-2">
+                        <h6 class="fw-bold mb-1">Adresse:</h6>
+                        <p class="mb-2">{{ $user->address ?? 'Non renseignée' }}</p>
                     </div>
 
-                    <div class="mb-4">
-                        <h6 class="fw-bold">Rôles:</h6>
+                    <div class="mb-3">
+                        <h6 class="fw-bold mb-1">Rôles:</h6>
                         @if($user->roles->count() > 0)
                             <div class="d-flex flex-wrap gap-1">
                                 @foreach($user->roles as $role)
@@ -43,11 +48,11 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('users.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('users.index') }}" class="btn btn-sm btn-secondary">
                             <i class="fas fa-arrow-left me-1"></i> Retour
                         </a>
                         @can('edit users')
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">
                             <i class="fas fa-edit me-1"></i> Modifier
                         </a>
                         @endcan

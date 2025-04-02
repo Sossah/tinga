@@ -113,6 +113,29 @@
             color: var(--primary-color);
         }
         
+        .page-link:hover {
+            color: rgb(5, 83, 16);
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .dataTables_paginate .paginate_button {
+            padding: 0 !important;
+            margin: 0 2px !important;
+            border: none !important;
+        }
+        
+        .dataTables_paginate .paginate_button:hover {
+            background: transparent !important;
+            border: none !important;
+        }
+        
+        .dataTables_paginate .paginate_button.current {
+            background: var(--primary-color) !important;
+            color: white !important;
+            border: none !important;
+        }
+        
         .dataTables_info, .dataTables_length, .dataTables_filter label {
             font-size: 0.80rem;
         }

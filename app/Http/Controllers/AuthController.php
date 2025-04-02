@@ -15,21 +15,26 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
-
+        
+        $credentials = $request->only('email', 'password');
+        
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard'); // Redirection après connexion
+            $request->session()->regenerate();
+            
+            // Rediriger vers la vérification 2FA au lieu du dashboard
+            return redirect()->route('two-factor.challenge');
         }
-
-        return back()->withErrors(['email' => 'Identifiants incorrects']);
+        
+        return back()->withErrors([
+            'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
+        ])->withInput($request->except('password'));
     }
-
 
     public function logout()
     {
