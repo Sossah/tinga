@@ -12,18 +12,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: url('https://www.ceet.tg/tg/wp-content/uploads/2024/07/Copie-de-_DSC2389.jpg') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Poppins', sans-serif;
+            position: relative;
         }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(233, 236, 239, 0.85) 100%);
+            z-index: -1;
+        }
+        
         .card {
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             border: none;
             overflow: hidden;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.9);
         }
         .card-header {
             background: linear-gradient(135deg, #117a1a 0%, #1a9e25 100%);
@@ -106,7 +122,7 @@
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="card">
                     <div class="card-header text-center">
                         <h4 class="m-0 fw-bold">Vérification à deux facteurs</h4>
@@ -127,8 +143,8 @@
                         <form method="POST" action="{{ route('two-factor.verify') }}">
                             @csrf
 
-                            <div class="mb-4">
-                                <input id="code" type="text" class="form-control form-control-lg text-center @error('code') is-invalid @enderror" name="code" required autocomplete="one-time-code" autofocus placeholder="• • • • • •" maxlength="6">
+                            <div class="mb-4 mx-auto" style="max-width: 200px;">
+                                <input id="code" type="text" class="form-control form-control-md text-center @error('code') is-invalid @enderror" name="code" required autocomplete="one-time-code" autofocus placeholder="• • • • • •" maxlength="6">
 
                                 @error('code')
                                     <span class="invalid-feedback text-center" role="alert">
@@ -137,8 +153,8 @@
                                 @enderror
                             </div>
 
-                            <div class="d-grid gap-2 mt-4">
-                                <button type="submit" class="btn btn-success btn-lg">
+                            <div class="d-grid gap-2 mt-4 mx-auto" style="max-width: 200px;">
+                                <button type="submit" class="btn btn-success">
                                     <i class="fas fa-lock me-2"></i> Vérifier
                                 </button>
                             </div>

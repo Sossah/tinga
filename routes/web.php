@@ -89,10 +89,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/two-factor-challenge', [App\Http\Controllers\TwoFactorAuthController::class, 'index'])->name('two-factor.challenge');
     Route::post('/two-factor-verify', [App\Http\Controllers\TwoFactorAuthController::class, 'verify'])->name('two-factor.verify');
     Route::post('/two-factor-resend', [App\Http\Controllers\TwoFactorAuthController::class, 'resend'])->name('two-factor.resend');
+    
+    // Autres routes protégées...
 });
 
 // Appliquer le middleware 'two-factor' à toutes les routes protégées
-Route::middleware(['auth', 'two-factor'])->group(function () {
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
     // User management routes
@@ -145,4 +147,4 @@ Route::middleware(['auth', 'two-factor'])->group(function () {
     // Routes pour les rapports
     Route::get('/rapports', [App\Http\Controllers\RapportController::class, 'index'])->name('rapports.index');
     Route::get('/rapports/souscriptions', [App\Http\Controllers\RapportController::class, 'souscriptions'])->name('rapports.souscriptions');
-    Route::get('/rapports/financiers', [App\Http\Controllers\RapportController::class, 'financiers'])->name('rapports.financiers');}); // Close the middleware group
+    Route::get('/rapports/financiers', [App\Http\Controllers\RapportController::class, 'financiers'])->name('rapports.financiers');// Close the middleware group
